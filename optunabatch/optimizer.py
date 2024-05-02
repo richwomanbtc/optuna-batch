@@ -150,9 +150,7 @@ def print_result(result: asyncio.Task[TrialWithValues]):
     trial = r.trial
     values = r.values
 
-    print(
-        f"Trial {r.trial.number} completed. The value is {values}. The best value is {trial.study.best_value} at trial {trial.study.best_trial.number} with parameters {json.dumps(trial.study.best_trial.params,indent=None)}"  # noqa: E501
-    )
+    print(f"Trial {trial.number} completed with value {values}.")
 
 
 async def main():
