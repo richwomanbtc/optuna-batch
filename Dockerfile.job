@@ -1,0 +1,20 @@
+FROM python:3.11 AS base
+
+RUN pip install poetry
+ENV POETRY_VIRTUALENVS_CREATE=true \
+    POETRY_VIRTUALENVS_IN_PROJECT=true \
+    POETRY_NO_INTERACTION=true
+
+WORKDIR /app
+
+COPY pyproject.toml ./
+RUN poetry install --only main
+
+FROM python:3.11-slim as runtime
+
+ENV PATH="/app/.venv/bin:$PATH"
+
+COPY --from=base /app/.venv /app/.venv
+
+COPY ./optunabatch .
+CMD ["python", "job.py"]
