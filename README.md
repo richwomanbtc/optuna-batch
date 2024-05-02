@@ -11,7 +11,7 @@ This is a template repository for running Optuna optimization on Google Cloud Ba
 
 ## How to use
 
-1. Create two service accounts, SA1 and SA2. SA1 is for optimizer and SA2 is for job batches. Add permissions `Storage Object User`, `Batch Job Editor`, `Artifact Registry Reader` and `Logs Writer` to a service account for SA1 and `Storage Object User`, `Artifact Registry Reader` and `Logs Writer` for SA2.
+1. Create two service accounts, SA1 and SA2. SA1 is for optimizer and SA2 is for job batches. Add permissions `roles/storage.objectUser`, `roles/batch.jobsEditor`, `roles/artifactregistry.reader` and `roles/logging.logWriter` to a service account for SA1 and `roles/storage.admin`, `roles/artifactregistry.reader`, `roles/batch.agentReporter` and `roles/logging.logWriter` for SA2.
 1. Edit `optunabatch/custom.py` to define your objective function and study settings.
 1. Edit `config.yaml` to define your cloud batch settings. Service account for the job instances (SA2) should be specified in `service_account` field.
 1. `make build` to build the Docker images.
