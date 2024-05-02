@@ -3,7 +3,7 @@
 This is a template repository for running Optuna optimization on Google Cloud Batch and GCS.
 
 ## Requirements
-- `python >= 3.11`
+- `python>=3.11`
 - `docker`
 - `make`
 - `yq`
